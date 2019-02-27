@@ -41,7 +41,7 @@
 ## 4. 异步显示数据
     封装ajax: 
         promise+axios封装ajax请求的函数
-        封装每个接口对应的请求函数(能根据接口定义ajax请求函数)
+        封装每个接口对应的请求函数(能根据接口文档定义)
         解决ajax的跨越域问题: 配置代理, 对代理的理解
     vuex编码
         创建所有相关的模块: store/index|state|mutations|actions|getters|mutation-types
@@ -71,5 +71,33 @@
     使用svg图片实现loading的效果
 
 # day03
+## 1. 登陆的前台效果
+    1). 2种登陆方式的切换
+    2). 手机号验证
+    3). 倒计时
+    4). 密码显示/隐藏
+    5). 前台表单验证
+    
+## 2. 登陆的前后台交互效果
+    1). 一次性图形验证码
+    2). 一次性验证码
+    3). 手机号/验证码登陆
+    4). 用户名/密码/图形验证码登陆
+    5). 退出登陆
+    6). 自动登陆
 
-
+## cookie与session
+    cookie:
+    	会话cookie: 保存在浏览器的运行时内存中, 关闭浏览器数据不存在了
+    	持久化cookie: 保存在浏览器管理的文件中, 关闭浏览器数据还存在了
+    
+    sesion:
+    	会话:  从浏览器打开到关闭整体过程都是一个会话
+    	会话/session对象: 保存在服务器端用来存储数据的容器, 
+    			这个对象一旦产生, 服务器会自动向浏览返回一个对应的cookie, 用来保存session的ID: connect.sid=sessionID
+    			在服务器通过req.session获取session对象
+    				1. 从req中取出以connect.sid为key的cookie值
+    				2. 如果有, 找到对应的session对象
+    				3. 如果没有, 创建新的session对象
+    	目标: 关闭浏览器, 再打开还是同一个会话?
+    		让connect.sid的cookie成为一个持久化cookie
