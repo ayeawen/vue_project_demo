@@ -59,7 +59,11 @@
     },
 
     computed: {
-      ...mapState(['address', 'categorys']),
+      //...mapState(['address', 'categorys'])
+      ...mapState({
+        address: state => state.msite.address,
+        categorys: state => state.msite.categorys
+      }),
 
       //根据categorys一维数组生成二维数组, 小数组中的length最大值为8
       categorysArr () {
