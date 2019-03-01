@@ -42,11 +42,13 @@ const actions = {
   },
 
   // 异步获取商家信息
-  async getRatings ({commit}) {
+  async getRatings ({commit}, cb) {
     const result = await reqRatings()
     if (result.code===0) {
       const ratings = result.data
       commit(RECEIVE_RATINGS, {ratings})
+
+      cb && cb()
     }
   },
 
@@ -130,7 +132,18 @@ const getters = {
   //总价格
   totalPrice (state) {
     return state.cartFoods.reduce((preTotal, item) => preTotal + item.count*item.price, 0)
+  },
+
+  //评价总数
+  ratingCount (state) {
+    return state.ratings.length
+  },
+
+  //推荐的评价
+  UpRatingCount(state) {
+    return state.ratings.reduce((pre, rating) => pre + (rating.rateType===0) ? 1 : 0, 0)
   }
+
 }
 
 export default {

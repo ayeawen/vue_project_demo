@@ -2,7 +2,7 @@
   <div class="food" v-if="isShow">
     <div class="food-content">
       <div class="image-header">
-        <img :src="food.image">
+        <img v-lazy="food.image">
         <p class="foodpanel-desc">{{food.description}}</p>
         <div class="back">
           <i class="iconfont icon-arrow_left" @click="isShow=false"></i>
